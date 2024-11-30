@@ -16,6 +16,7 @@ function setup() {
 
 function draw() {
   background(img);
+  //background(map)
   fill(0);
 
   // mouth

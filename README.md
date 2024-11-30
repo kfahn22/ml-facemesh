@@ -99,7 +99,7 @@ function bicorn(r) {
 
 I used the FaceMesh mesh map as a guide for the placement.
 
-<p align="center"><img src="make-pumpkin-face/mesh_map.jpg" alt="FaceMesh mesh map" width="800px"></p>
+<p align="center"><img src="assets/meshmap-pumpkin.jpg" alt="FaceMesh mesh map" width="800px"></p>
 
 It was a little tricky getting the eyes, nose, and mouth positioned so that there were no distortions in the uvTexture. Once I had the eyes, nose, and mouth positioned properly, I rendered them on top of a pumpkin image.
 
