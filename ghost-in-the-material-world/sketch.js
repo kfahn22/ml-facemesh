@@ -3,15 +3,13 @@
 // https://editor.p5js.org/kfahn/sketches/bmSF2Kcuv
 
 let video;
-
 let faceMesh;
 let faces = [];
-let offsetX = 0;
-let offsetY = 0;
+// let offsetX = 0;
+// let offsetY = 0;
 let faceShader;
 let img;
-let t = 0;
-let rawOffsetX, rawOffsetY;
+let t = 0.15;
 
 function preload() {
   faceMesh = ml5.faceMesh({ maxFaces: 1, flipped: true });
@@ -24,7 +22,7 @@ function gotFaces(results) {
 }
 
 function setup() {
-  createCanvas(400, 400, WEBGL);
+  createCanvas(800, 800, WEBGL);
   shader(faceShader);
   video = createCapture(VIDEO, { flipped: true });
   video.hide();
@@ -39,19 +37,19 @@ function draw() {
     let box = face.box;
     //console.log(box)
 
-    let rawOffsetX = box.xMin; //+ box.width / 2;
-    let rawOffsetY = box.yMin + box.height / 2;
+    let centerX = box.xMax + box.width / 2;
+    let centerY = box.yMax + box.height / 2;
 
     faceShader.setUniform("u_tex", img);
-    faceShader.setUniform("u_resolution", [width, height]);
+    //faceShader.setUniform("u_resolution", [width, height]);
     faceShader.setUniform("t", pow(t, 1 / 1.5));
     faceShader.setUniform("aspect", [1, width / height]);
-    setCenter(rawOffsetX, rawOffsetY);
+    setCenter(centerX, centerY);
 
     if (t < 1) {
       t += 0.005;
     } else {
-      t = 0;
+      t = 0.15;
     }
 
     rect(0, 0, width, height);
@@ -60,8 +58,8 @@ function draw() {
 
 // Thanks to Barney Codes for this approach!!
 // https://www.youtube.com/watch?v=ZcRptHYY3zM
-function setCenter(offsetX, offsetY) {
-  faceShader.setUniform("center", [offsetX / width, offsetY / height]);
+function setCenter(cX, cY) {
+  faceShader.setUniform("center", [cX / width, cY / height]);
 }
 
 function mousePressed() {
