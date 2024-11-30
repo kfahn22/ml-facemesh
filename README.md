@@ -21,10 +21,10 @@ function setCenter(cX, cY) {
 }
 ```
 
-Although this is certainly not necessary, I am using the [Craniod](https://mathworld.wolfram.com/Cranioid.html) function to create the "ghost" head.  
+Although this is certainly not necessary, I am using the [Craniod](https://mathworld.wolfram.com/Cranioid.html) function to create the "ghost" head.
 
 ```GLSL
-vec2 Spherical(vec2 pos) 
+vec2 Spherical(vec2 pos)
 {
    float r = sqrt(pos.x*pos.x + pos.y*pos.y);
    float theta = atan(pos.y, pos.x);
@@ -36,12 +36,12 @@ float CraniodSDF(vec2 pos, vec2 radius) {
     float d = Spherical(pos).x;
     float theta = Spherical(pos).y;
     float r = 0.65 * sin(theta) +
-        2.15 * sqrt(1.0 - 0.75 * pow(cos(theta), 2.0));   
-        
+        2.15 * sqrt(1.0 - 0.75 * pow(cos(theta), 2.0));
+
     q.x = radius.x * r * cos(theta);
     q.y = radius.y * r * sin(theta);
-  
-   return d -= length(q); 
+
+   return d -= length(q);
 }
 ```
 
@@ -60,6 +60,36 @@ float shockwave(vec2 dir, float t) {
 <p align="center"><img src="assets/faceMesh.jpg" alt="Ghosts in the material world" width="800px"></p>
 
 ## Pumpkin Face
+
+To make the pumpkin face, I used the quadrilateral curve to render black triangles at the eyes and nose and used the [bicorn curve](https://mathcurve.com/courbes2d.gb/bicorne/bicorne.shtml) to add a mouth. I used the FaceMesh mesh map as a guide for the placement.
+
+```JavaScript
+function bicorn(r) {
+  let points = [];
+  for (let theta = 0; theta < TWO_PI; theta += 0.05) {
+    let x = r * sin(theta);
+    let y = (r * pow(cos(theta), 2)) / (2.3 + cos(theta));
+    points.push(createVector(x, y));
+  }
+  return points;
+}
+```
+
+<p align="center"><img src="make-pumpkin-face/mesh_map.jpg" alt="FaceMesh mesh map" width="800px"></p>
+
+It was a little tricky getting the eyes, nose, and mouth positioned so that there were no distortions added by the FaceMesh keypoints. Once I had the eyes, nose, and mouth positioned properly, I rendered them on top of a pumpkin image.
+
+<p align="center"><img src="pumpkin-face/pumpkin_face.jpg" alt="Pumpkin face" width="800px"></p>
+
+I then adapted the [FaceMesh texture sketch](https://editor.p5js.org/codingtrain/sketches/zUKp9n4MW) from Daniel Shiffman to render the image as a mask. The final touch was to add the pumpkin stem (with the background removed) at the top.
+
+```JavaScript
+let k = face.keypoints[10];
+push();
+translate(k.x - w / 2, k.y - w);
+image(stem, 0, 0, w, w);
+pop();
+```
 
 <p align="center"><img src="assets/pumpkin.jpg" alt="Pumpkin Face" width="800px"></p>
 

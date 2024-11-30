@@ -8,7 +8,7 @@ let w = 50;
 
 function preload() {
   faceMesh = ml5.faceMesh({ maxFaces: 1, flipped: true });
-  img = loadImage("pumpkin_face.jpg");
+  img = loadImage("pumpkin_face-18.jpg");
   stem = loadImage("pumpkin-top.png");
 }
 

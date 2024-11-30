@@ -5,8 +5,6 @@
 let video;
 let faceMesh;
 let faces = [];
-// let offsetX = 0;
-// let offsetY = 0;
 let faceShader;
 let img;
 let t = 0.15;
@@ -41,7 +39,6 @@ function draw() {
     let centerY = box.yMax + box.height / 2;
 
     faceShader.setUniform("u_tex", img);
-    //faceShader.setUniform("u_resolution", [width, height]);
     faceShader.setUniform("t", pow(t, 1 / 1.5));
     faceShader.setUniform("aspect", [1, width / height]);
     setCenter(centerX, centerY);
