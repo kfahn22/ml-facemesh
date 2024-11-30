@@ -66,3 +66,7 @@ function draw() {
     endShape();
   }
 }
+
+function mousePressed() {
+  save("pumpkin.jpg");
+}
