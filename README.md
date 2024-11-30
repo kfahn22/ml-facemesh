@@ -1,12 +1,12 @@
 # ml5 FaceMesh Model
 
-Daniel Shiffman recented released a [tutorial](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/facemesh) about the ml5 FaceMesh model. While it is possible to use the FaceMesh model in ways that are inappropriate or unethical, I have used it to create some (very) silly visual effects.
+Daniel Shiffman recently released a [tutorial](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/facemesh) about the ml5 FaceMesh model. While it is possible to use the FaceMesh model in ways that are inappropriate or unethical, I have used it to create some **silly** visual effects.
 
 ## Ghost in the Material World
 
-The first effect adapts some clever shader code from [Barney Codes](https://www.youtube.com/watch?v=ZcRptHYY3zM) to create a shockwave effect centered around the bounding box for the face. 
+The first effect adapts some clever shader code from [Barney Codes](https://www.youtube.com/watch?v=ZcRptHYY3zM) to create a shockwave effect centered around the bounding box for the face.
 
-First, we need to calculate the (centerX, centerY) to pass to the frag file. I have to confess that this was the hardest part. Adding the midpoint of the box width and height to (box.xMax, boxyMax) seems counter-intuitive (at least to me), but my guess is that is necessary because the video is flipped.
+First, we need to calculate the (centerX, centerY) to pass to the frag file. I have to confess that this was the hardest part. Adding the midpoint of the box width and height to the box xMax and yMax seems counter-intuitive (at least to me), but my guess is that is necessary because the video is flipped.
 
 ```JavaScript
 let centerX = box.xMax + box.width / 2;
@@ -16,8 +16,8 @@ let centerY = box.yMax + box.height / 2;
 We then use an adapted function from Barney Codes to update the "center" sent to the frag file in draw.
 
 ```JavaScript
-function setCenter(offsetX, offsetY) {
-  faceShader.setUniform("center", [offsetX / width, offsetY / height]);
+function setCenter(cX, cY) {
+  faceShader.setUniform("center", [cX / width, cY / height]);
 }
 ```
 
