@@ -77,7 +77,7 @@ function bicorn(r) {
 
 <p align="center"><img src="make-pumpkin-face/mesh_map.jpg" alt="FaceMesh mesh map" width="800px"></p>
 
-It was a little tricky getting the eyes, nose, and mouth positioned so that there were no distortions added by the FaceMesh keypoints. Once I had the eyes, nose, and mouth positioned properly, I rendered them on top of a pumpkin image.
+It was a little tricky getting the eyes, nose, and mouth positioned so that there were no distortions in the uvTexture added by the FaceMesh keypoints. Once I had the eyes, nose, and mouth positioned properly, I rendered them on top of a pumpkin image.
 
 <p align="center"><img src="pumpkin-face/pumpkin_face.jpg" alt="Pumpkin face" width="800px"></p>
 
@@ -94,5 +94,24 @@ pop();
 <p align="center"><img src="assets/pumpkin.jpg" alt="Pumpkin Face" width="800px"></p>
 
 ## Flower Face
+
+For the flower face, I used the center of a chrysanthemum flower for the face texture. I added "flower petals" around the face, using the `face.faceOval` 
+
+```JavaScript
+function petal(x, y, r, a, b, c, d, angle) {
+  push();
+  translate(x, y);
+  rotate(radians(angle));
+  let adj = radians(d);
+  beginShape();
+  for (let theta = adj; theta < PI - adj; theta += 0.01) {
+    let x = r * a * sin(theta) - c;
+    let y = r * b * sin(theta) * cos(theta);
+    vertex(x, y);
+  }
+  endShape(CLOSE);
+  pop();
+}
+```
 
 <p align="center"><img src="assets/flower.jpg" alt="Flower Face" width="800px"></p>

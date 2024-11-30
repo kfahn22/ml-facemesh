@@ -53,6 +53,7 @@ function draw() {
   background(0);
   randomSeed(5);
   orbitControl();
+  noStroke();
   translate(-width / 2, -height / 2);
 
   //image(video, 0, 0);
@@ -83,30 +84,15 @@ function draw() {
     let n = oval.keypoints.length;
     for (let i = 0; i < n-1; i += 2) {
       let k = oval.keypoints[i];
-
       let angle = -90 + (i * 360) / n;
-
-      if (i % 3 == 0) {
-        c = palette[0];
-      } else if (i % 3 == 1) {
-        c = palette[1];
-      } else if (i % 3 == 2) {
-        c = palette[2];
-      }
-      noStroke();
-
-      c[3] = 150;
+      //c = random(palette.slice(0, 2));
+      c = random(palette.slice(3, 6));
+      c[3] = 200;
       fill(c);
       petal(k.x, k.y, 20, 6, 3, angle);
-
-      if (i % 3 == 0) {
-        c = palette[3];
-      } else if (i % 3 == 1) {
-        c = palette[4];
-      } else if (i % 3 == 2) {
-        c = palette[5];
-      }
-      c[3] = 200;
+      //c = random(palette.slice(3,6));
+      c = random(palette.slice(0,2));
+      c[3] = 150;
       fill(c);
       noStroke();
       petal(k.x, k.y, 19, 5, 2, angle);
@@ -114,29 +100,15 @@ function draw() {
 
     for (let i = 1; i < n - 1; i += 2) {
       let k = oval.keypoints[i];
-
       let angle = -90 + (i * 360) / n;
-
-      if (i % 3 == 0) {
-        c = palette[0];
-      } else if (i % 3 == 1) {
-        c = palette[1];
-      } else if (i % 3 == 2) {
-        c = palette[2];
-      }
-      noStroke();
-      c[3] = 150;
+      //c = random(palette.slice(0, 2));
+      c = random(palette.slice(3, 6));
+      c[3] = 200;
       fill(c);
       petal(k.x, k.y, 19.5, 6, 3, angle);
-      if (i % 3 == 0) {
-        c = palette[0];
-      } else if (i % 3 == 1) {
-        c = palette[1];
-      } else if (i % 3 == 2) {
-        c = palette[2];
-      }
-
-      c[3] = 200;
+      c = random(palette.slice(0,2));
+      // c = random(palette.slice(3, 6));
+      c[3] = 150;
       fill(c);
       petal(k.x, k.y, 18, 5, 2, angle);
     }
@@ -148,7 +120,7 @@ function petal(x, y, r, a, b, angle) {
   translate(x, y);
   rotate(radians(angle));
   beginShape();
-  for (let theta = adj; theta < PI; theta += 0.01) {
+  for (let theta = 0; theta < PI; theta += 0.01) {
     let x = r * a * sin(theta);
     let y = r * b * sin(theta) * cos(theta);
     vertex(x, y);
