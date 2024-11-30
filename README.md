@@ -95,17 +95,16 @@ pop();
 
 ## Flower Face
 
-For the flower face, I used the center of a chrysanthemum flower for the face texture. I added "flower petals" around the face, using the `face.faceOval` 
+For the flower face, I used the center of a chrysanthemum flower for the face texture. I added "petals" around the face by translating to the faceOval keypoints, and adding a rotation based on the location of the keypoint in the faceOval.
 
 ```JavaScript
-function petal(x, y, r, a, b, c, d, angle) {
+function petal(x, y, r, a, b, angle) {
   push();
   translate(x, y);
   rotate(radians(angle));
-  let adj = radians(d);
   beginShape();
-  for (let theta = adj; theta < PI - adj; theta += 0.01) {
-    let x = r * a * sin(theta) - c;
+  for (let theta = adj; theta < PI; theta += 0.01) {
+    let x = r * a * sin(theta);
     let y = r * b * sin(theta) * cos(theta);
     vertex(x, y);
   }
