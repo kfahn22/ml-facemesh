@@ -1,6 +1,6 @@
 # ml5 FaceMesh Model
 
-Daniel Shiffman recently released a [tutorial](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/facemesh) about the ml5 FaceMesh model. While it is possible to use the FaceMesh model in ways that are inappropriate or unethical, I have used it to create some **silly** visual effects.
+Daniel Shiffman recently released a [tutorial](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/facemesh) about the [ml5 FaceMesh](https://docs.ml5js.org/#/reference/facemesh) model. While it is possible to use the FaceMesh model in ways that are inappropriate or unethical, I have used it to create some **silly** visual effects.
 
 ## Ghost in the Material World
 
@@ -61,7 +61,7 @@ float shockwave(vec2 dir, float t) {
 
 ## Flower Face
 
-For the flower face, I used the center of a chrysanthemum flower for the face texture. I added "petals" around the face by translating to the faceOval keypoints, and adding a rotation based on the location of the keypoint in the faceOval.
+For the flower face, I adapted the [FaceMesh texture sketch](https://editor.p5js.org/codingtrain/sketches/zUKp9n4MW) from Daniel Shiffman to render the the center of a chrysanthemum flower for the face mask. I added "petals" around the face by translating to the faceOval keypoints, and adding a rotation based on the location of the keypoint in the faceOval.
 
 ```JavaScript
 function petal(x, y, r, a, b, angle) {
