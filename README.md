@@ -6,7 +6,7 @@ Daniel Shiffman recently released a [tutorial](https://thecodingtrain.com/tracks
 
 The first effect adapts some clever shader code from [Barney Codes](https://www.youtube.com/watch?v=ZcRptHYY3zM) to create a shockwave effect centered around the bounding box for the face.
 
-First, we need to calculate the (centerX, centerY) to pass to the frag file. I have to confess that this was the hardest part. I initally tried using the `width/2 + box.width/2, height/2 + box.height/2`, but the tracking didn't work. Adding the box.width/2 and box.height/2 to the box xMax and yMax seems counter-intuitive (at least to me), but after some trial and error this is what seems to center the effect properly. My guess is that is necessary because the video is flipped, although I would not be surprised to learn that I have made some silly mistake.
+First, we need to calculate the (centerX, centerY) to pass to the frag file. I have to confess that this was the hardest part. I initally tried using the `width/2 + box.width/2, height/2 + box.height/2`, but the tracking didn't work. Adding the box.width/2 and box.height/2 to the box.xMax and box.yMax seems counter-intuitive (at least to me), but after some trial and error this is what seems to center the effect properly. My guess is that is necessary because the video is flipped, although I would not be surprised to learn that I have made some silly mistake.
 
 ```JavaScript
 let centerX = box.xMax + box.width / 2;
@@ -83,7 +83,7 @@ function petal(x, y, r, a, b, angle) {
 
 ## Pumpkin Face
 
-To make the pumpkin face, I used the quadrilateral curve to render black triangles at the eyes and nose and used the [bicorn curve](https://mathcurve.com/courbes2d.gb/bicorne/bicorne.shtml) to add a mouth. I used the FaceMesh mesh map as a guide for the placement.
+To make the pumpkin face, I used the quadrilateral curve to render black triangles at the eyes and nose and used the [bicorn curve](https://mathcurve.com/courbes2d.gb/bicorne/bicorne.shtml) to add a mouth. 
 
 ```JavaScript
 function bicorn(r) {
@@ -97,9 +97,11 @@ function bicorn(r) {
 }
 ```
 
+I used the FaceMesh mesh map as a guide for the placement.
+
 <p align="center"><img src="make-pumpkin-face/mesh_map.jpg" alt="FaceMesh mesh map" width="800px"></p>
 
-It was a little tricky getting the eyes, nose, and mouth positioned so that there were no distortions in the uvTexture added by the FaceMesh keypoints. Once I had the eyes, nose, and mouth positioned properly, I rendered them on top of a pumpkin image.
+It was a little tricky getting the eyes, nose, and mouth positioned so that there were no distortions in the uvTexture. Once I had the eyes, nose, and mouth positioned properly, I rendered them on top of a pumpkin image.
 
 <p align="center"><img src="pumpkin-face/pumpkin_face.jpg" alt="Pumpkin face" width="800px"></p>
 
