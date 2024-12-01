@@ -105,7 +105,7 @@ It was a little tricky getting the eyes, nose, and mouth positioned so that ther
 
 <p align="center"><img src="pumpkin-face/pumpkin_face.jpg" alt="Pumpkin face" width="800px"></p>
 
-I then adapted the [FaceMesh texture sketch](https://editor.p5js.org/codingtrain/sketches/zUKp9n4MW) from Daniel Shiffman to render the image as a mask. The final touch was to add the pumpkin stem (with the background removed) at the top.
+I then adapted the [FaceMesh texture sketch](https://editor.p5js.org/codingtrain/sketches/zUKp9n4MW) from Daniel Shiffman to render the image as a mask. The final touch was to add the pumpkin stem (with the background removed) at the top. You can play with the sketch [here](https://editor.p5js.org/kfahn/full/GyvntE4fG).
 
 ```JavaScript
 let k = face.keypoints[10];
