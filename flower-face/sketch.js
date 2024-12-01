@@ -1,7 +1,7 @@
 let video;
 let faceMesh;
 let faces = [];
-let midpoints = [];
+//let midpoints = [];
 let triangles;
 let uvCoords;
 let img;
