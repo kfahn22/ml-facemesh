@@ -61,7 +61,7 @@ float shockwave(vec2 dir, float t) {
 
 ## Flower Face
 
-For the flower face, I adapted the [FaceMesh texture sketch](https://editor.p5js.org/codingtrain/sketches/zUKp9n4MW) from Daniel Shiffman to render the the center of a chrysanthemum flower for the face mask. I added "petals" around the face by translating to the faceOval keypoints, and adding a rotation based on the location of the keypoint in the faceOval. You can find the p5 sketch [here](https://editor.p5js.org/kfahn/sketches/dO7nermIUd).
+For the flower face, I adapted the [FaceMesh texture sketch](https://editor.p5js.org/codingtrain/sketches/zUKp9n4MW) from Daniel Shiffman to render the the center of a chrysanthemum flower for the face mask. I added "petals" around the face by translating to the faceOval keypoints, and adding a rotation based on the location of the keypoint in the faceOval. You can find the p5 sketch [here](https://editor.p5js.org/kfahn/full/dO7nermIUd).
 
 ```JavaScript
 function petal(x, y, r, a, b, angle) {
