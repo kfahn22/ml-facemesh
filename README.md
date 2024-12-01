@@ -4,7 +4,7 @@ Daniel Shiffman recently released a [tutorial](https://thecodingtrain.com/tracks
 
 ## Ghost in the Material World
 
-The first effect adapts some clever shader code from [Barney Codes](https://www.youtube.com/watch?v=ZcRptHYY3zM) to create a shockwave effect centered around the bounding box for the face.
+The first effect adapts some clever shader code from [Barney Codes](https://www.youtube.com/watch?v=ZcRptHYY3zM) to create a shockwave effect centered around the bounding box for the face. You can check it out [here](https://editor.p5js.org/kfahn/full/bmSF2Kcuv)
 
 First, we need to calculate the (centerX, centerY) to pass to the frag file. I have to confess that this was the hardest part. I initally tried using the `width/2 + box.width/2, height/2 + box.height/2`, but the tracking didn't work. Adding the box.width/2 and box.height/2 to the box.xMax and box.yMax seems counter-intuitive (at least to me), but after some trial and error this is what seems to center the effect properly. My guess is that is necessary because the video is flipped, although I would not be surprised to learn that I have made some silly mistake.
 
